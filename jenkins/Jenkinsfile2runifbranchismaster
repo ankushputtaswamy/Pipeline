@@ -8,7 +8,7 @@ pipeline {
     stages {
             stage('STAGE1') {
                 when {
-                        BRANCH 'main'
+                        expression { BRANCH == 'main' }
                     }
                 steps {
                     sh '''
@@ -18,7 +18,7 @@ pipeline {
             }
             stage('STAGE2') {
                 when {
-                        BRANCH 'branch1'
+                        expression { BRANCH == 'branch1' }
                     }
                 steps {
                     sh '''
