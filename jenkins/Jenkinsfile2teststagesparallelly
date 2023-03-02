@@ -10,7 +10,6 @@ pipeline {
         }
 
     stages {
-    stages {
             stage('BUILD') {
                 steps {
                     sh '''
@@ -61,5 +60,4 @@ pipeline {
             }
         }
     }
-}
 }
