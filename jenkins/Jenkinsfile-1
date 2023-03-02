@@ -1,36 +1,25 @@
 pipeline {
-    agent any
-    /*parameters {
-        string defaultValue: 'main', name: 'BRANCH', trim: true
-    }*/
-
-    environment {
-        BRANCH_NAME = ANKUSH
-    }
-
-    stages {
-        stage('BUILD') {
-            steps{
-               {   sh '''
-                        echo "This is a BUILD stage $BRANCH_NAME"
-                    '''
-                }
-            }
-        }
-        stage('TESTING') {
-            steps{
-               {   sh '''
-                        echo "This is a TESTING stage $BRANCH_NAME"
-                    '''
-                }
-            }
-        }
-        stage('DEPLOY') {
-            steps{
-               {   sh '''
-                        echo "This is a DEPLOY stage $BRANCH_NAME"
-                    '''
-                }
-            }
+agent any
+stages {
+    stage ('BUILD') {
+        steps {
+            sh '''
+            echo "This is BUILD STAGE"
+            '''
         }
     }
+    stage ('TESING') {
+        steps {
+            sh '''
+            echo "This is TESTING STAGE"
+            '''
+        }
+    }
+    stage ('DEPLOY') {
+        steps {
+            sh '''
+            echo "This is DEPLOY STAGE"
+            '''
+        }
+    }
+}
