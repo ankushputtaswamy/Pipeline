@@ -1,44 +1,44 @@
 pipeline {
     agent any
     stages {
-        stage('BUILD') {
-            steps {
-                sh '''
-                echo "This is BUILD STAGE"
-                '''
+            stage('BUILD') {
+                steps {
+                    sh '''
+                    echo "This is BUILD STAGE"
+                    '''
+                }
             }
-        }
-        stage('TESTING') {
-                parallel {
-                    stage('TESTING IN WINDOWS MACHINE') {
-                        steps {
-                            sh '''
-                            echo "This is TESTING STAGE RUNNING ON WINDOWS MACHINE"
-                            '''
+            stage('TESTING') {
+                    parallel {
+                        stage('TESTING IN WINDOWS MACHINE') {
+                            steps {
+                                sh '''
+                                echo "This is TESTING STAGE RUNNING ON WINDOWS MACHINE"
+                                '''
+                            }
                         }
-                    }
-                    stage('TESTING IN LINUX MACHINE') {
-                        steps {
-                            sh '''
-                            echo "This is TESTING STAGE RUNNING ON LINUX MACHINE"
-                            '''
+                        stage('TESTING IN LINUX MACHINE') {
+                            steps {
+                                sh '''
+                                echo "This is TESTING STAGE RUNNING ON LINUX MACHINE"
+                                '''
+                            }
                         }
-                    }
-                    stage('TESTING IN MAC MACHINE') {
-                        steps {
-                            sh '''
-                            echo "This is TESTING STAGE RUNNING ON MAC MACHINE"
-                            '''
+                        stage('TESTING IN MAC MACHINE') {
+                            steps {
+                                sh '''
+                                echo "This is TESTING STAGE RUNNING ON MAC MACHINE"
+                                '''
+                            }
                         }
                     }
                 }
             }
-        }
-        stage('DEPLOY') {
-            steps {
-                sh '''
-                echo "This is DEPLOY STAGE"
-                '''
+            stage('DEPLOY') {
+                steps {
+                    sh '''
+                    echo "This is DEPLOY STAGE"
+                    '''
+                }
             }
-        }
     }
