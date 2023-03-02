@@ -6,7 +6,7 @@ parameters {
 }
 
 environment {
-  MASTERNODEIP = "branch"
+  MASTERNODEIP = "Monkey"
 }
 
 stages {
