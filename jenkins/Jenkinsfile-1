@@ -2,7 +2,7 @@ pipeline {
 agent any
 
 parameters {
-  string defaultValue: 'PUBLICIP', name: '13.126.51.35', trim: true
+  string defaultValue: '13.126.51.35PUBLICIP', name: 'PUBLICIP', trim: true
 }
 
 environment {
