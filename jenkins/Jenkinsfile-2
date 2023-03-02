@@ -2,32 +2,28 @@ pipeline {
 agent any
 
 parameters {
+  choice choices: ['C-Project', 'J-Project'], name: 'Choose Project Name to Run'
+}
+/*parameters {
   string defaultValue: '172.31.41.133', name: 'VARIABLE', trim: true
 }
 
 environment {
   MASTERNODEIP = "${VARIABLE}"
 }
-
+*/
 stages {
-    stage ('BUILD') {
+    stage ('C-Project') {
         steps {
             sh '''
-            echo "This is BUILD STAGE running in $MASTERNODEIP"
+            echo "This is C-Project"
             '''
         }
     }
-    stage ('TESING') {
+    stage ('J-Project') {
         steps {
             sh '''
-            echo "This is TESTING STAGE in $MASTERNODEIP"
-            '''
-        }
-    }
-    stage ('DEPLOY') {
-        steps {
-            sh '''
-            echo "This is DEPLOY STAGE in $MASTERNODEIP"
+            echo "This is JAVA Project"
             '''
         }
     }
