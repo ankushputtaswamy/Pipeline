@@ -4,28 +4,37 @@ agent any
 parameters {
   choice choices: ['C-Project', 'J-Project'], name: 'Choose Project Name to Run'
 }
-/*parameters {
-  string defaultValue: '172.31.41.133', name: 'VARIABLE', trim: true
-}
+    /*parameters {
+    string defaultValue: '172.31.41.133', name: 'VARIABLE', trim: true
+    }
 
-environment {
-  MASTERNODEIP = "${VARIABLE}"
-}
-*/
-stages {
-    stage ('C-Project') {
-        steps {
-            sh '''
-            echo "This is C-Project"
-            '''
+    environment {
+    MASTERNODEIP = "${VARIABLE}"
+    }
+    */
+    stages {
+        stage ('C-Project') {
+            steps {
+                when {
+                    choices 'C-Project'
+                    sh '''
+                echo "This is C-Project"
+                '''
+
+                }
+                
+            }
+        }
+        stage ('J-Project') {
+            steps {
+                when {
+                    choices 'J-Project'
+                    sh '''
+                echo "This is JAVA Project"
+                '''
+                }
+                
+            }
         }
     }
-    stage ('J-Project') {
-        steps {
-            sh '''
-            echo "This is JAVA Project"
-            '''
-        }
-    }
-}
 }
