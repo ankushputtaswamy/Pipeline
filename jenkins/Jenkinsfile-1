@@ -2,7 +2,7 @@ pipeline {
 agent any
 
 parameters {
-  string defaultValue: 'HARSHITHA_J', name: 'VARIABLE', trim: true
+  string defaultValue: 'ANKUSH P', name: 'VARIABLE', trim: true
 }
 
 environment {
