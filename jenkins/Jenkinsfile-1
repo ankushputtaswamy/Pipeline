@@ -34,16 +34,6 @@ stages {
                     }
                 }
             }
-            steps {
-            sh '''
-            echo "This is TESTING STAGE in WINDOWS MACHINE $MASTERNODEIP"
-            '''
-            }
-            steps {
-            sh '''
-            echo "This is TESTING STAGE in LINUX MACHINE $MASTERNODEIP"
-            '''
-            }
         }
         
     }
@@ -54,5 +44,4 @@ stages {
             '''
         }
     }
-}
 }
