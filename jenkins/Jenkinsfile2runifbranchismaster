@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+            stage('STAGE1') {
+                steps {
+                    when {
+                        branch 'main'
+                    }
+                    sh '''
+                    echo "This is STAGE1 printing as it is running on master"
+                    '''
+                }
+            }
+            stage('STAGE2') {
+                steps {
+                    when {
+                        branch 'branch1'
+                    }
+                    sh '''
+                    echo "This is STAGE2 printing as it is running the branch1"
+                    '''
+                }
+            }
+        }
+    }
