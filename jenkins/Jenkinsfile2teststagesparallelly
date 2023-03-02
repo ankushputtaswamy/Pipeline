@@ -2,7 +2,11 @@ pipeline {
     agent any
 
         parameters {
-        choice choices: ['main', 'branch1'], name: 'branch'
+        string defaultValue: 'main', name: 'branch', trim: true
+        }
+
+        environment {
+        BRANCH_NAME = "${branch}"
         }
 
     stages {
