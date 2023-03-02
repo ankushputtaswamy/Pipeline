@@ -2,13 +2,18 @@ pipeline {
     agent any
 
         parameters {
-        choice choices: ['main', 'branch1'], name: 'BRANCH'
+        string defaultValue: 'main', name: 'branch', trim: true
         }
+
+        environment {
+        BRANCH_NAME = "${branch}"
+        }
+
 
     stages {
             stage('STAGE1') {
                 when {
-                        expression { BRANCH == 'main' }
+                        branch 'main' 
                     }
                 steps {
                     sh '''
@@ -18,7 +23,7 @@ pipeline {
             }
             stage('STAGE2') {
                 when {
-                        expression { BRANCH == 'branch1' }
+                        branch 'branch1'
                     }
                 steps {
                     sh '''
