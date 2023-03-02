@@ -4,9 +4,11 @@ pipeline {
     stages {
         stage('STAGE-A') {
             steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 echo "This is STAGE-A RUNNING"
                 exit 1
                 script { stage_result = true}
+                }
             }
         }
         stage('STAGE-B') {
