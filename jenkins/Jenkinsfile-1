@@ -2,11 +2,11 @@ pipeline {
 agent any
 
 parameters {
-  string defaultValue: 'main', name: 'Enter-the-parameter', trim: true
+  string defaultValue: 'HARSHITHA_J', name: 'HARSHITHAGONDEDAHALLI', trim: true
 }
 
 environment {
-  MASTERNODEIP = "${Enter-the-parameter}"
+  MASTERNODEIP = "${ANKUSH}"
 }
 
 stages {
