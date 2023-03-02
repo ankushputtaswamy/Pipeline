@@ -24,13 +24,11 @@ pipeline {
                                 '''
                             }
                         }
-                        stage('TESTING IN MAC MACHINE') {
-                            steps {
-                                sh '''
-                                echo "This is TESTING STAGE RUNNING ON MAC MACHINE"
-                                '''
-                            }
-                        }
+                    stage('TESTING IN MAC MACHINE') {
+                        steps {
+                            sh '''
+                            echo "This is TESTING STAGE RUNNING ON MAC MACHINE"
+                            '''
                     }
                 }
             }
@@ -41,4 +39,6 @@ pipeline {
                     '''
                 }
             }
+        }
     }
+}
