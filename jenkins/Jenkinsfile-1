@@ -6,7 +6,7 @@ parameters {
 }
 
 environment {
-  MASTERNODEIP = "${ANKUSH}"
+  MASTERNODEIP = "${HARSHITHAGONDEDAHALLI}"
 }
 
 stages {
