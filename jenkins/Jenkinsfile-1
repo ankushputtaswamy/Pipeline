@@ -2,7 +2,7 @@ pipeline {
 agent any
 
 parameters {
-  string defaultValue: 'ANKUSH P', name: 'VARIABLE', trim: true
+  string defaultValue: '172.31.41.133', name: 'VARIABLE', trim: true
 }
 
 environment {
