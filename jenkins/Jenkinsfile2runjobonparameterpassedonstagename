@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+        parameters {
+        choice choices: ['STAGE1', 'STAGE2'], name: 'Choose-the-Stage-to-Run'
+        }
+
+    stages {
+        stage('STAGE1') {
+            when {
+                expression{ params.Choose-the-Stage-to-Run == STAGE1}
+            }
+            steps {
+                sh '''
+                echo "This is STAGE1"
+                '''
+            }
+        }
+        stage('STAGE2') {
+            when {
+                expression{ params.Choose-the-Stage-to-Run == STAGE2}
+            }
+            steps {
+                sh '''
+                echo "This is STAGE2"
+                '''
+            }
+        }
+    }
+}
