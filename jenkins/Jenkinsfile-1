@@ -6,7 +6,7 @@ parameters {
 }
 
 environment {
-  MASTERNODEIP = "172.31.41.133"
+  MASTERNODEIP = "PRIVATE IP 172.31.41.133"
 }
 
 stages {
