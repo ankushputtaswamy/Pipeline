@@ -2,13 +2,13 @@ pipeline {
     agent any
 
         parameters {
-        choice choices: ['STAGE1', 'STAGE2'], name: 'Choose-the-Stage-to-Run'
+        choice choices: ['STAGE1', 'STAGE2'], name: 'Choose_the_Stage_to_Run'
         }
 
     stages {
         stage('STAGE1') {
             when {
-                expression{ params.Choose-the-Stage-to-Run == STAGE1}
+                expression{ Choose_the_Stage_to_Run == 'STAGE1' } 
             }
             steps {
                 sh '''
@@ -18,7 +18,7 @@ pipeline {
         }
         stage('STAGE2') {
             when {
-                expression{ params.Choose-the-Stage-to-Run == STAGE2}
+                expression{ Choose_the_Stage_to_Run == 'STAGE2' }
             }
             steps {
                 sh '''
