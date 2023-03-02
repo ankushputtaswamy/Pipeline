@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    parameters {
+    /*parameters {
         string defaultValue: 'main', name: 'BRANCH', trim: true
-    }
+    }*/
 
     environment {
-        BRANCH_NAME = "${BRANCH}"
+        BRANCH_NAME = ANKUSH
     }
 
     stages {
@@ -17,57 +17,20 @@ pipeline {
                 }
             }
         }
-
-        stage('TEST') {
-            parallel {
-
-                stage('TEST ON LINUX MACHINE') {
-                    steps {
-                        sh '''
-                            
-                            echo "This is a TEST on LINUX"
-                            
-                        '''
-                    }
+        stage('TESTING') {
+            steps{
+               {   sh '''
+                        echo "This is a TESTING stage $BRANCH_NAME"
+                    '''
                 }
-
-                stage('TEST ON WINDOWS MACHINE') {
-                    steps {
-                        sh '''
-                            //sleep 6
-                            echo "This is a TEST on WINDOWS"
-                        '''
-                    }
-                }
-
-                stage('TEST ON MAC MACHINE') {
-                    steps {
-                        
-                            sh '''
-                                echo "This is a TEST on WINDOWS"
-    
-                            '''
-                        }    
-                    }
-                }
-
-                stage('TEST ON CHROME MACHINE') {
-                    steps {
-                        sh '''
-                            echo "This is a TEST on WINDOWS"
-                        '''
-                    }
-                }
-
             }
         }
-
         stage('DEPLOY') {
             steps{
-                sh '''
-                    echo "This is a DEPLOY stage $BRANCH_NAME"
-                '''
+               {   sh '''
+                        echo "This is a DEPLOY stage $BRANCH_NAME"
+                    '''
+                }
             }
         }
     }
-}
