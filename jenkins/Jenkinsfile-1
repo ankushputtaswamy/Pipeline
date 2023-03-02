@@ -1,6 +1,10 @@
 pipeline {
 agent any
 
+parameters {
+  string defaultValue: 'MAIN', name: 'BRANCH', trim: true
+}
+
 environment {
   MASTERNODEIP = "172.31.41.133"
 }
