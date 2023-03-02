@@ -17,12 +17,35 @@ stages {
             '''
         }
     }
-    stage ('TESING') {
-        steps {
+    stage ('TESTING') {
+            parallel {
+            stage('TESTING STAGE in WINDOWS MACHINE') {
+                steps {
+                sh '''
+                echo "This is TESTING STAGE in WINDOWS MACHINE $MASTERNODEIP"
+                '''
+                    }
+                }
+            stage('TESTING STAGE in LINUX MACHINE') {
+                steps {
+                sh '''
+                echo "This is TESTING STAGE in WINDOWS MACHINE $MASTERNODEIP"
+                '''
+                    }
+                }
+            }
+            steps {
             sh '''
-            echo "This is TESTING STAGE in $MASTERNODEIP"
+            echo "This is TESTING STAGE in WINDOWS MACHINE $MASTERNODEIP"
             '''
+            }
+            steps {
+            sh '''
+            echo "This is TESTING STAGE in LINUX MACHINE $MASTERNODEIP"
+            '''
+            }
         }
+        
     }
     stage ('DEPLOY') {
         steps {
