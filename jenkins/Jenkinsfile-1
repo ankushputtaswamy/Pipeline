@@ -1,34 +1,35 @@
 pipeline {
 agent any
 
-parameters {
-  string defaultValue: '172.31.41.133', name: 'VARIABLE', trim: true
-}
-
-environment {
-  MASTERNODEIP = "${VARIABLE}"
-}
-
-stages {
-    stage ('BUILD') {
-        steps {
-            sh '''
-            echo "This is BUILD STAGE running in $MASTERNODEIP"
-            '''
-        }
+    parameters {
+    string defaultValue: '172.31.41.133', name: 'VARIABLE', trim: true
     }
-    stage ('TESTING') {
-        steps {
-            sh '''
-            echo "This is TESTING STAGE running in $MASTERNODEIP"
-            '''
-        }
+
+    environment {
+    MASTERNODEIP = "${VARIABLE}"
     }
-    stage ('DEPLOY') {
-        steps {
-            sh '''
-            echo "This is DEPLOY STAGE in $MASTERNODEIP"
-            '''
+
+    stages {
+        stage ('BUILD') {
+            steps {
+                sh '''
+                echo "This is BUILD STAGE running in $MASTERNODEIP"
+                '''
+            }
+        }
+        stage ('TESTING') {
+            steps {
+                sh '''
+                echo "This is TESTING STAGE running in $MASTERNODEIP"
+                '''
+            }
+        }
+        stage ('DEPLOY') {
+            steps {
+                sh '''
+                echo "This is DEPLOY STAGE in $MASTERNODEIP"
+                '''
+            }
         }
     }
 }
