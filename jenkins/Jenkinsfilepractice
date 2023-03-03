@@ -1,5 +1,5 @@
 pipeline {
-agent any
+agent none
         parameters {
         //choice choices: ['BUILD', 'TESTING' , 'DEPLOY'], name: 'STAGES'
         string defaultValue: 'main', name: 'BRANCH', trim: true
@@ -11,6 +11,7 @@ agent any
 
     stages {
         stage('BUILD') {
+            agent {label 'c-project-node'}
             when {
                 //expression{ params.STAGES == 'BUILD'}
                 expression{ params.BRANCH == "$branch"}
@@ -24,6 +25,7 @@ agent any
             }
         }
         stage('TESTING') {
+            agent {label 'j-project-node'}
             when {
                 //expression{ params.STAGES == 'TESTING'}
                 expression{ params.BRANCH == "$branch"}
@@ -59,6 +61,7 @@ agent any
             }
         }
         stage('DEPLOY') {
+            agent {label 'c-project-node'}
             when {
                 //expression{ params.STAGES == 'DEPLOY'}
                 expression{ params.BRANCH == "main"}
