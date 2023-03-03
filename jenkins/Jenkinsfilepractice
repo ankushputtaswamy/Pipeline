@@ -41,19 +41,18 @@ agent any
             }
         }
     }
-    
-}
-post{
-    always {
-        echo "This will print always"
-    }
-    success{
-        echo "The BUILD_ID $BUILD_ID is Success"
-    }
-    unstable{
-        echo "The BUILD_ID $BUILD_ID is Unstable"
-    }
-    failure{
-        echo "The BUILD_ID $BUILD_ID is Failure"
+        post{
+        always {
+            echo "This will print always"
+        }
+        success{
+            echo "The BUILD_ID $BUILD_ID is Success"
+        }
+        unstable{
+            echo "The BUILD_ID $BUILD_ID is Unstable"
+        }
+        failure{
+            echo "The BUILD_ID $BUILD_ID is Failure"
+        }
     }
 }
