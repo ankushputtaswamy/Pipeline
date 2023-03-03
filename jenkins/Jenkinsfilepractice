@@ -1,7 +1,7 @@
 pipeline {
 agent any
         parameters {
-        choice choices: ['BUILD', 'TESTING', 'DEPLOY'], name: 'STAGES'
+        //choice choices: ['STAGE1', 'STAGE2'], name: 'STAGES'
         string defaultValue: 'main', name: 'BRANCH', trim: true
         }
 
@@ -12,7 +12,7 @@ agent any
     stages {
         stage('BUILD') {
             when {
-                expression{ params.STAGES == 'BUILD'}
+                //expression{ params.STAGES == 'BUILD'}
                 branch 'main'
             }
             steps {
@@ -25,7 +25,7 @@ agent any
         }
         stage('TESTING') {
             when {
-                expression{ params.STAGES == 'TESTING'}
+                //expression{ params.STAGES == 'TESTING'}
                 branch 'main'
             }
             parallel {
@@ -60,7 +60,7 @@ agent any
         }
         stage('DEPLOY') {
             when {
-                expression{ params.STAGES == 'DEPLOY'}
+                //expression{ params.STAGES == 'DEPLOY'}
                 branch 'branch1'
             }
             steps {
@@ -71,6 +71,7 @@ agent any
                 }
             }
         }
+    }
     }
         post{
         always {
