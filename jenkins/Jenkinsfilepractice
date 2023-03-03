@@ -1,0 +1,45 @@
+pipeline {
+agent any
+    stages {
+        stage('BUILD') {
+            steps {
+                sh '''
+                echo "This is BUILD Stage"
+                '''
+            }
+        }
+        stage('TESTING') {
+            parallel {
+                stage('TESTING IN WINDOWS MACHINE') {
+                    steps{
+                        sh '''
+                        echo "This is Testing stage in Windows Machine"
+                        '''
+                    }
+                }
+                stage('TESTING IN LINUX MACHINE') {
+                    steps{
+                        sh '''
+                        echo "This is Testing stage in LINUX Machine"
+                        '''
+                    }
+                }
+                stage('TESTING IN MAC MACHINE') {
+                    steps{
+                        sh '''
+                        echo "This is Testing stage in MAC Machine"
+                        '''
+                    }
+                }
+            }
+        }
+        stage('DEPLOY') {
+            steps {
+                sh '''
+                echo "This is DEPLOY Stage"
+                '''
+            }
+        }
+    }
+    
+}
