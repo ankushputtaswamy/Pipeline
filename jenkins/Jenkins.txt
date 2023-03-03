@@ -100,6 +100,7 @@ unstable – build is successful but not healthy.
 
 To backup/restore jenkins_home in github
 
+
 To restore jenkins_home directory
 
 Join the multi-part of jenkins home archive in to one archive
@@ -108,6 +109,8 @@ cat ./jenkins_data.tar.gz.parta* > "jenkins_data.tar.gz"
 Decompress the jenkins home
 
 tar -xzvf jenkins_data.tar.gz
+
+
 To backup jenkins_home directory
 
 Compress the jenkins home to tar archive
