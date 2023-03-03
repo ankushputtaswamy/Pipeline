@@ -31,29 +31,29 @@ agent any
             parallel {
                 stage('TESTING IN WINDOWS MACHINE') {
                     steps{
-                        catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
+                        //catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
                         echo "This is Running on $BRANCH and $STAGES stage in WINDOWS Machine"
                         '''
-                        }
+                        //}
                     }
                 }
                 stage('TESTING IN LINUX MACHINE') {
                     steps{
-                        catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
+                        //catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
                         echo "This is Running on $BRANCH and $STAGES stage in LINUX Machine"
                         '''
-                        }
+                        //}
                     }
                 }
                 stage('TESTING IN MAC MACHINE') {
                     steps{
-                        catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
+                        //catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                              sh '''
                         echo "This is Running on $BRANCH and $STAGES stage in MAC Machine"
                         '''
-                        }
+                        //}
                     }
                 }
             }
