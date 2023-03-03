@@ -13,12 +13,12 @@ agent any
         stage('BUILD') {
             when {
                 expression{ params.STAGES == 'BUILD'}
-                expression{ params.BRANCH == 'main'}
+                expression{ params.BRANCH == '$branch'}
             }
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
-                    echo "This is BUILD Stage"
+                    echo "This is BUILD Stage $branch $STAGES $branch $STAGES"
                     '''
                 }
             }
@@ -26,14 +26,14 @@ agent any
         stage('TESTING') {
             when {
                 expression{ params.STAGES == 'TESTING'}
-                expression{ params.BRANCH == 'main'}
+                expression{ params.BRANCH == '$branch'}
             }
             parallel {
                 stage('TESTING IN WINDOWS MACHINE') {
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
-                        echo "This is Testing stage in WINDOWS Machine"
+                        echo "This is Testing stage in WINDOWS Machine $branch $STAGES"
                         '''
                         }
                     }
@@ -42,7 +42,7 @@ agent any
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
-                        echo "This is Testing stage in LINUX Machine"
+                        echo "This is Testing stage in LINUX Machine $branch $STAGES"
                         '''
                         }
                     }
@@ -51,7 +51,7 @@ agent any
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                              sh '''
-                        echo "This is Testing stage in MAC Machine"
+                        echo "This is Testing stage in MAC Machine $branch $STAGES"
                         '''
                         }
                     }
@@ -61,12 +61,12 @@ agent any
         stage('DEPLOY') {
             when {
                 expression{ params.STAGES == 'DEPLOY'}
-                expression{ params.BRANCH == 'branch1'}
+                expression{ params.BRANCH == '$branch'}
             }
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
-                    echo "This is DEPLOY Stage"
+                    echo "This is DEPLOY Stage $branch $STAGES"
                     '''
                 }
             }
