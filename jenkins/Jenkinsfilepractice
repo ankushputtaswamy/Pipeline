@@ -11,11 +11,11 @@ agent none
 
     stages {
         stage('BUILD') {
-            agent {label 'c-project-node1_ubuntu'}
             when {
                 //expression{ params.STAGES == 'BUILD'}
                 expression{ params.BRANCH == "$branch"}
             }
+            agent {label 'c-project-node1_ubuntu'}
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
@@ -63,11 +63,11 @@ agent none
             }
         }
         stage('DEPLOY') {
-            agent {label 'j-project-node1_redhat'}
             when {
                 //expression{ params.STAGES == 'DEPLOY'}
                 expression{ params.BRANCH == "main"}
             }
+            agent {label 'j-project-node1_redhat'}
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
