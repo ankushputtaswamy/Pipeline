@@ -18,7 +18,7 @@ agent any
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
-                    echo "This is BUILD Stage $branch $STAGES"
+                    echo "This is Running on $BRANCH and $STAGES"
                     '''
                 }
             }
@@ -33,7 +33,7 @@ agent any
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
-                        echo "This is Testing stage in WINDOWS Machine $branch $STAGES"
+                        echo "This is Running on $BRANCH and $STAGES in WINDOWS Machine"
                         '''
                         }
                     }
@@ -42,7 +42,7 @@ agent any
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
-                        echo "This is Testing stage in LINUX Machine $branch $STAGES"
+                        echo "This is Running on $BRANCH and $STAGES in LINUX Machine"
                         '''
                         }
                     }
@@ -51,7 +51,7 @@ agent any
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                              sh '''
-                        echo "This is Testing stage in MAC Machine $branch $STAGES"
+                        echo "This is Running on $BRANCH and $STAGES in MAC Machine"
                         '''
                         }
                     }
@@ -66,7 +66,7 @@ agent any
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
-                    echo "This is DEPLOY Stage $branch $STAGES"
+                    echo "This is Running on $BRANCH and $STAGES"
                     '''
                 }
             }
