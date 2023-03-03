@@ -1,5 +1,5 @@
 pipeline {
-agent none
+agent any
         parameters {
         //choice choices: ['BUILD', 'TESTING' , 'DEPLOY'], name: 'STAGES'
         string defaultValue: 'main', name: 'BRANCH', trim: true
@@ -15,7 +15,7 @@ agent none
                 //expression{ params.STAGES == 'BUILD'}
                 expression{ params.BRANCH == "$branch"}
             }
-            agent {label 'c-project-node1_ubuntu'}
+            //agent {label 'c-project-node1_ubuntu'}
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
@@ -31,7 +31,7 @@ agent none
             }
             parallel {
                 stage('TESTING IN WINDOWS MACHINE') {
-                    agent {label 'j-project-node2_redhat'}
+                    //agent {label 'j-project-node2_redhat'}
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
@@ -41,7 +41,7 @@ agent none
                     }
                 }
                 stage('TESTING IN LINUX MACHINE') {
-                    agent {label 'j-project-node2_redhat'}
+                    //agent {label 'j-project-node2_redhat'}
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
@@ -51,7 +51,7 @@ agent none
                     }
                 }
                 stage('TESTING IN MAC MACHINE') {
-                    agent {label 'j-project-node2_redhat'}
+                    //agent {label 'j-project-node2_redhat'}
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                              sh '''
@@ -67,7 +67,7 @@ agent none
                 //expression{ params.STAGES == 'DEPLOY'}
                 expression{ params.BRANCH == "main"}
             }
-            agent {label 'j-project-node1_redhat'}
+            //agent {label 'j-project-node1_redhat'}
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
