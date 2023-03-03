@@ -18,7 +18,7 @@ agent any
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
-                    echo "This is BUILD Stage $branch $STAGES $branch $STAGES"
+                    echo "This is BUILD Stage $branch $STAGES"
                     '''
                 }
             }
