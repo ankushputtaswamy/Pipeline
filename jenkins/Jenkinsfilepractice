@@ -1,7 +1,14 @@
 pipeline {
 agent any
+        parameters {
+        choice choices: ['BUILD', 'TESTING', 'DEPLOY'], name: 'STAGES'
+        }
+
     stages {
         stage('BUILD') {
+            when {
+                expression{ params.STAGES == 'BUILD'}
+            }
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
@@ -11,6 +18,9 @@ agent any
             }
         }
         stage('TESTING') {
+            when {
+                expression{ params.STAGES == 'TESTING'}
+            }
             parallel {
                 stage('TESTING IN WINDOWS MACHINE') {
                     steps{
@@ -42,6 +52,9 @@ agent any
             }
         }
         stage('DEPLOY') {
+            when {
+                expression{ params.STAGES == 'DEPLOY'}
+            }
             steps {
                 catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                     sh '''
