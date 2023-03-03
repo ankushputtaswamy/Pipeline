@@ -1,7 +1,7 @@
 pipeline {
 agent any
         parameters {
-        choice choices: ['BUILD', 'TESTING' , 'DEPLOY'], name: 'STAGES'
+        //choice choices: ['BUILD', 'TESTING' , 'DEPLOY'], name: 'STAGES'
         string defaultValue: 'main', name: 'BRANCH', trim: true
         }
 
@@ -12,7 +12,7 @@ agent any
     stages {
         stage('BUILD') {
             when {
-                expression{ params.STAGES == 'BUILD'}
+                //expression{ params.STAGES == 'BUILD'}
                 expression{ params.BRANCH == "$branch"}
             }
             steps {
@@ -25,42 +25,42 @@ agent any
         }
         stage('TESTING') {
             when {
-                expression{ params.STAGES == 'TESTING'}
+                //expression{ params.STAGES == 'TESTING'}
                 expression{ params.BRANCH == "main"}
             }
             parallel {
                 stage('TESTING IN WINDOWS MACHINE') {
                     steps{
-                        //catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
+                        catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
                         echo "This is Running on $BRANCH and $STAGES stage in WINDOWS Machine"
                         '''
-                        //}
+                        }
                     }
                 }
                 stage('TESTING IN LINUX MACHINE') {
                     steps{
-                        //catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
+                        catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
                         echo "This is Running on $BRANCH and $STAGES stage in LINUX Machine"
                         '''
-                        //}
+                        }
                     }
                 }
                 stage('TESTING IN MAC MACHINE') {
                     steps{
-                        //catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
+                        catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                              sh '''
                         echo "This is Running on $BRANCH and $STAGES stage in MAC Machine"
                         '''
-                        //}
+                        }
                     }
                 }
             }
         }
         stage('DEPLOY') {
             when {
-                expression{ params.STAGES == 'DEPLOY'}
+                //expression{ params.STAGES == 'DEPLOY'}
                 expression{ params.BRANCH == "branch1"}
             }
             steps {
