@@ -25,7 +25,6 @@ agent none
             }
         }
         stage('TESTING') {
-            //agent {label 'j-project-node'}
             when {
                 //expression{ params.STAGES == 'TESTING'}
                 expression{ params.BRANCH == "$branch"}
