@@ -25,13 +25,14 @@ agent none
             }
         }
         stage('TESTING') {
-            agent {label 'j-project-node'}
+            //agent {label 'j-project-node'}
             when {
                 //expression{ params.STAGES == 'TESTING'}
                 expression{ params.BRANCH == "$branch"}
             }
             parallel {
                 stage('TESTING IN WINDOWS MACHINE') {
+                    agent {label 'j-project-node'}
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
@@ -41,6 +42,7 @@ agent none
                     }
                 }
                 stage('TESTING IN LINUX MACHINE') {
+                    agent {label 'j-project-node'}
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                         sh '''
@@ -50,6 +52,7 @@ agent none
                     }
                 }
                 stage('TESTING IN MAC MACHINE') {
+                    agent {label 'j-project-node'}
                     steps{
                         catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
                              sh '''
