@@ -1,0 +1,26 @@
+pipeline{
+    agent any
+    stages{
+        stage('STAGE1'){
+            steps{
+                sh '''
+                echo "Hai, This is Ankush"
+                '''
+            }
+        }
+        stage('STAGE2'){
+            steps{
+                sh '''
+                echo "I am practicing groovy script"
+                '''
+            }
+        }
+        stage('STAGE2'){
+            steps{
+                sh '''
+                echo "I will check whether i am able to succeed in using when condition, parallel, passing string and choice parameters"
+                '''
+            }
+        }
+    }
+}
