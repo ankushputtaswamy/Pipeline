@@ -15,7 +15,7 @@ pipeline{
                 '''
             }
         }
-        stage('STAGE2'){
+        stage('STAGE3'){
             steps{
                 sh '''
                 echo "I will check whether i am able to succeed in using when condition, parallel, passing string and choice parameters"
