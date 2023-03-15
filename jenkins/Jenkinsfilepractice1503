@@ -1,5 +1,10 @@
 pipeline{
     agent any
+
+    parameters {
+    string defaultValue: 'STAGE1', name: 'Stage', trim: true
+    }
+
     stages{
         stage('STAGE1'){
             steps{
