@@ -8,12 +8,30 @@ pipeline{
                 '''
             }
         }
-        stage('STAGE2'){
-            steps{
-                sh '''
-                echo "I am practicing groovy script"
-                '''
-            }
+        stage('STAGE2_PARALLEL'){
+                parallel {
+                    stage('STAGE2.1') {
+                        steps {
+                            sh '''
+                            echo "This is STAGE2.1 under STAG2_PARALLEL"
+                            '''
+                        }
+                    }
+                    stage('STAGE2.2') {
+                        steps {
+                            sh '''
+                            echo "This is STAGE2.2 under STAG2_PARALLEL"
+                            '''
+                        }
+                    }
+                    stage('STAGE2.3') {
+                        steps {
+                            sh '''
+                            echo "This is STAGE2.3 under STAG2_PARALLEL"
+                            '''
+                        }
+                    }
+                }
         }
         stage('STAGE3'){
             steps{
