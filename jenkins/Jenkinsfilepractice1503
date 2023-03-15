@@ -5,8 +5,16 @@ pipeline{
     string defaultValue: 'STAGE1', name: 'Stage', trim: true
     }
 
+    environment {
+    Stage_Name = "${Stage}"
+    }
+
+
     stages{
         stage('STAGE1'){
+            when {
+                expression{params.Stage == "STAGE1"}
+            }
             steps{
                 sh '''
                 echo "Hai, This is Ankush"
@@ -14,6 +22,9 @@ pipeline{
             }
         }
         stage('STAGE2_PARALLEL'){
+            when {
+                expression{params.Stage == "STAGE2_PARALLEL"}
+            }
                 parallel {
                     stage('STAGE2.1') {
                         steps {
@@ -39,6 +50,9 @@ pipeline{
                 }
         }
         stage('STAGE3'){
+            when {
+                expression{params.Stage == "STAGE3"}
+            }
             steps{
                 sh '''
                 echo "I will check whether i am able to succeed in using when condition, parallel, passing string and choice parameters"
