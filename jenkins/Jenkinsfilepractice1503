@@ -1,8 +1,12 @@
 pipeline{
     agent any
 
-    parameters {
+    /*parameters {
     string defaultValue: 'STAGE1', name: 'Stage', trim: true
+    }*/
+
+    parameters {
+    choice choices: ['STAGE1', 'STAGE2_PARALLEL', 'STAGE3'], name: 'Stage'
     }
 
     environment {
